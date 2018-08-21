@@ -16,7 +16,7 @@ preferences {
 }
 
 metadata {
-	definition (name: "Json Switch v4", namespace: "NVass", author: "N Vass") {
+	definition (name: "Json Switch", namespace: "NVass", author: "N Vass") {
 		capability "Actuator"
 		capability "Switch"		
 	}
