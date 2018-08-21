@@ -11,7 +11,7 @@ preferences {
 		input "internal_ip", "text", title: "Internal IP", required: false
 		input "internal_port", "text", title: "Internal Port (if not 80)", required: false
 		input "json_on", "text", title: "On Json", required: false
-		input "json_off", "text", title: "Off Jason", required: false
+		input "json_off", "text", title: "Off Json", required: false
 	}
 }
 
