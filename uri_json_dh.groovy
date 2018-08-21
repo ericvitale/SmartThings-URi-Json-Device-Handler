@@ -31,7 +31,7 @@ metadata {
 			state "off", label: 'Off', action: "switch.on", icon: "st.switches.switch.off", backgroundColor: "#ffffff", nextState: "on"
 				state "on", label: 'On', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#79b821", nextState: "off"
 		}
-		standardTile("offButton", "device.button", width: 1, height: 1, canChangeIcon: true) {
+		standardTile("offButton", "device.switch", width: 1, height: 1, canChangeIcon: true) {
 			state "default", label: 'Force Off', action: "switch.off", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
 		}
 		standardTile("onButton", "device.switch", width: 1, height: 1, canChangeIcon: true) {
