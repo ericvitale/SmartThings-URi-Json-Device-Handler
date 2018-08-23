@@ -48,7 +48,6 @@ def parse(String description) {
 }
 
 def on() {
-	if (json_on){
 		def port
 			if (internal_port){
 				port = "${internal_port}"
@@ -56,23 +55,23 @@ def on() {
 				port = 80
 			}
 
-		def result = new physicalgraph.device.HubAction(
+		def commands =  ["json_on"]
+	
+		def result =    [
 				uri: "${internal_ip}:${port}",
 				headers: ["Content-Type": "application/json", "Accept": "application/json",
-				body: "${json_on}",
+				body: commands}",
 				]
-				)
-			sendHubCommand(result)
-			sendEvent(name: "switch", value: "on") 
-			log.debug "Executing ON" 
-			log.debug result
+			
+		sendHubCommand(result)
+		sendEvent(name: "switch", value: "on") 
+		log.debug "Executing ON" 
+		log.debug result
 		
 		asynchttp_v1.post('postResponseHandler', params)
-	}
 }
 
 def off() {
-	if (json_off){
 		def port
 			if (internal_port){
 				port = "${internal_port}"
@@ -80,12 +79,13 @@ def off() {
 				port = 80
 			}
 
-		def result = new physicalgraph.device.HubAction(
+		def commands =  ["json_off"]
+	
+		def result =    [
 				uri: "${internal_ip}:${port}",
 				headers: ["Content-Type": "application/json", "Accept": "application/json",
-				body: "${json_off}",
+				body: commands}",
 				]
-				)
 
 			sendHubCommand(result)
 			sendEvent(name: "switch", value: "off")
@@ -93,5 +93,4 @@ def off() {
 			log.debug result
 		
 		asynchttp_v1.post('postResponseHandler', params)
-	}
 }
