@@ -55,7 +55,7 @@ def on() {
 				port = 80
 			}
 
-		def commands =  ["json_on"]
+		def commands =  ["relay1":"on", "relay2":"on", "relay3":"on", "relay4":"on"]
 	
 		def result =    [
 				uri: "${internal_ip}:${port}",
@@ -63,7 +63,7 @@ def on() {
 				body: commands,
 				]
 			
-		sendHubCommand(result)
+		//sendHubCommand(result)
 		sendEvent(name: "switch", value: "on") 
 		log.debug "Executing ON" 
 		log.debug result
@@ -79,7 +79,7 @@ def off() {
 				port = 80
 			}
 
-		def commands =  ["json_off"]
+		def commands =  ["relay1":"on", "relay2":"on", "relay3":"on", "relay4":"on"]
 	
 		def result =    [
 				uri: "${internal_ip}:${port}",
@@ -87,10 +87,19 @@ def off() {
 				body: commands,
 				]
 
-			sendHubCommand(result)
+			//sendHubCommand(result)
 			sendEvent(name: "switch", value: "off")
 			log.debug "Executing OFF" 
 			log.debug result
 		
 		asynchttp_v1.post('postResponseHandler', params)
+}
+
+def postResponseHandler(response, data) {
+
+    if(response.getStatus() == 200 || response.getStatus() == 207) {
+	log.info "POST response received from the device."
+    } else {
+        log.error "POST Error: ${response.getErrorData()}"
+    }
 }
