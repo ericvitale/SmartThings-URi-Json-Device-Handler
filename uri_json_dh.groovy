@@ -4,6 +4,7 @@
 * Json Switch Device Handler
 */
 
+include 'asynchttp_v1'
 
 preferences {
     
