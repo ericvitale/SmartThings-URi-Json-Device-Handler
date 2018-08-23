@@ -56,16 +56,17 @@ def on() {
 			}
 
 		def result = new physicalgraph.device.HubAction(
-				method: "POST",
+				uri: "${internal_ip}:${port}",
+				headers: ["Content-Type": "application/json", "Accept": "application/json",
 				body: "${json_on}",
-				headers: [
-				HOST: "${internal_ip}:${port}"
 				]
 				)
 			sendHubCommand(result)
 			sendEvent(name: "switch", value: "on") 
 			log.debug "Executing ON" 
 			log.debug result
+		
+		asynchttp_v1.post('postResponseHandler', params)
 	}
 }
 
@@ -79,10 +80,9 @@ def off() {
 			}
 
 		def result = new physicalgraph.device.HubAction(
-				method: "POST",
+				uri: "${internal_ip}:${port}",
+				headers: ["Content-Type": "application/json", "Accept": "application/json",
 				body: "${json_off}",
-				headers: [
-				HOST: "${internal_ip}:${port}"
 				]
 				)
 
@@ -90,5 +90,7 @@ def off() {
 			sendEvent(name: "switch", value: "off")
 			log.debug "Executing OFF" 
 			log.debug result
+		
+		asynchttp_v1.post('postResponseHandler', params)
 	}
 }
