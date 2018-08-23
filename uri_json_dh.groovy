@@ -48,7 +48,7 @@ def parse(String description) {
 }
 
 def on() {
-		def port =
+		def port
 			if (internal_port){
 				port = "${internal_port}"
 			} else {
@@ -72,7 +72,7 @@ def on() {
 }
 
 def off() {
-		def port = 
+		def port
 			if (internal_port){
 				port = "${internal_port}"
 			} else {
