@@ -57,7 +57,7 @@ def on() {
 
 		def commands =  ["relay1":"on", "relay2":"on", "relay3":"on", "relay4":"on"]
 	
-		def result =    [
+		def params =    [
 				uri: "${internal_ip}:${port}",
 				headers: ["Content-Type": "application/json", "Accept": "application/json"],
 				body: commands,
@@ -81,7 +81,7 @@ def off() {
 
 		def commands =  ["relay1":"on", "relay2":"on", "relay3":"on", "relay4":"on"]
 	
-		def result =    [
+		def params =    [
 				uri: "${internal_ip}:${port}",
 				headers: ["Content-Type": "application/json", "Accept": "application/json"],
 				body: commands,
