@@ -60,7 +60,7 @@ def on() {
 		def params =    [
 				uri: "${internal_ip}:${port}",
 				headers: ["Content-Type": "application/json", "Accept": "application/json"],
-				body: commands,
+				body: commands
 				]
 			
 		//sendHubCommand(result)
@@ -84,7 +84,7 @@ def off() {
 		def params =    [
 				uri: "${internal_ip}:${port}",
 				headers: ["Content-Type": "application/json", "Accept": "application/json"],
-				body: commands,
+				body: commands
 				]
 
 			//sendHubCommand(result)
