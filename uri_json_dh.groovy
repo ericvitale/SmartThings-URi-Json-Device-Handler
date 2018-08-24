@@ -66,7 +66,7 @@ def on() {
 		//sendHubCommand(result)
 		sendEvent(name: "switch", value: "on") 
 		log.debug "Executing ON" 
-		log.debug result
+		log.debug params
 		
 		asynchttp_v1.post('postResponseHandler', params)
 }
@@ -90,7 +90,7 @@ def off() {
 			//sendHubCommand(result)
 			sendEvent(name: "switch", value: "off")
 			log.debug "Executing OFF" 
-			log.debug result
+			log.debug params
 		
 		asynchttp_v1.post('postResponseHandler', params)
 }
