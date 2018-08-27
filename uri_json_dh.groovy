@@ -129,7 +129,11 @@ def sendCommand(theCommandValue) {
     
     log("Params = ${params}", "DEBUG")
 		
-	asynchttp_v1.post('postResponseHandler', params)
+	try {
+		asynchttp_v1.post('postResponseHandler', params)
+	} catch(e) {
+		log(e, "ERROR")
+	}
 }
 
 def postResponseHandler(response, data) {
