@@ -127,6 +127,7 @@ def sendCommand(theCommandValue) {
 				  	body: commands
 				 ]
     
+	log("Commands = ${commands}", "DEBUG")
     log("Params = ${params}", "DEBUG")
 		
 	try {
