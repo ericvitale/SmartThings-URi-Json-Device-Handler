@@ -68,7 +68,11 @@ def on() {
 		log.debug "Executing ON" 
 		log.debug params
 		
+	try {
 		asynchttp_v1.post('postResponseHandler', params)
+	} catch(e) {
+		log.error e
+	}
 }
 
 def off() {
@@ -92,7 +96,11 @@ def off() {
 			log.debug "Executing OFF" 
 			log.debug params
 		
+		try {
 		asynchttp_v1.post('postResponseHandler', params)
+	} catch(e) {
+		log.error e
+	}
 }
 
 def postResponseHandler(response, data) {
