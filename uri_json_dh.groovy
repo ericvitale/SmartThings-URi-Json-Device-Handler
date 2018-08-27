@@ -121,14 +121,14 @@ def sendCommand(theCommandValue) {
 	def commands =  ["${getRelay()}": "${theCommandValue}"]
 	
 	def params = [
-				 	uri: 'http://api.github.com',
-					headers: [	"Content-Type":"application/json", 
-        		  				"Accept":"application/json"],
-				  	body: commands
-				 ]
+		uri: "${getIpAddress()}:${getPort()}",
+		headers: [	"Content-Type":"application/json", 
+        		  	"Accept":"application/json"],
+		body: commands
+		]
     
 	log("Commands = ${commands}", "DEBUG")
-    log("Params = ${params}", "DEBUG")
+        log("Params = ${params}", "DEBUG")
 		
 	try {
 		asynchttp_v1.post('postResponseHandler', params)
