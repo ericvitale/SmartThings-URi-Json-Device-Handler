@@ -118,32 +118,23 @@ def off() {
 }
 
 def sendCommand(theCommandValue) {
-	def commands =  ["${getRelay()}": "${theCommandValue}"]
-	
-	def params = [
-		uri: "${getIpAddress()}:${getPort()}",
-		headers: [	"Content-Type":"application/json", 
-        		  	"Accept":"application/json"],
-		body: commands
-		]
+	def commands = new JsonBuilder()
+	commands.call("${getRelay()}": "${theCommandValue}")
     
 	log("Commands = ${commands}", "DEBUG")
-        log("Params = ${params}", "DEBUG")
-		
-	try {
-		asynchttp_v1.post('postResponseHandler', params)
-	} catch(e) {
-		log(e, "ERROR")
-	}
-}
+	
+	def headers = [:] 
+	headers.put("HOST", "${internal_ip}:${port}")
+	headers.put("Content-Type", "application/json")
+	
+	def hubAction = new physicalgraph.device.HubAction(
+    		path: "",
+        	method: "POST",
+		body: commands,
+        	headers: headers
+	)
 
-def postResponseHandler(response, data) {
-
-    if(response.getStatus() == 200 || response.getStatus() == 207) {
-	log.info "POST response received from the device."
-    } else {
-        log.error "POST Error: ${response.getErrorData()}"
-    }
+	sendHubCommand(hubAction)	
 }
 
 private getLogPrefix() {
