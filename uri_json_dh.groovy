@@ -4,9 +4,9 @@
 * Json Switch Device Handler
 */
 
-public static String version() { return "v0.1.0.20180824" }
+public static String version() { return "v0.1.0.20180901" }
 
-include 'groovy.json.JsonBuilder'
+import groovy.json.JsonBuilder
 
 preferences {
     
