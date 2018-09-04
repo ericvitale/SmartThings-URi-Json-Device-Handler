@@ -4,7 +4,7 @@
 * Json Switch Device Handler
 */
 
-public static String version() { return "v0.1.0.20180901" }
+public static String version() { return "v0.1.0.20180904a" }
 
 import groovy.json.JsonBuilder
 
@@ -119,10 +119,7 @@ def off() {
 
 def sendCommand(theCommandValue) {
 	def commands = new JsonBuilder()
-	//commands.call("${getRelay()}": "${theCommandValue}")
-	
-	//commands.call("relay1":"${theCommandValue}","relay2":"${theCommandValue}","relay3":"${theCommandValue}","relay4":"${theCommandValue}","relay5":"${theCommandValue}","relay6":"${theCommandValue}","relay7":"${theCommandValue}","relay8":"${theCommandValue}"}
-	
+
 	def root = commands relay1: theCommandValue, relay2: theCommandValue, relay3: theCommandValue, relay4: theCommandValue, relay5: theCommandValue, relay6: theCommandValue, relay7: theCommandValue, relay8: theCommandValue
     
 	log("commands = " + commands.toString(), "DEBUG")
