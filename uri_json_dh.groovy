@@ -121,8 +121,11 @@ def sendCommand(theCommandValue) {
 	def commands = new JsonBuilder()
 	//commands.call("${getRelay()}": "${theCommandValue}")
 	
-	commands.call("relay1":"${theCommandValue}","relay2":"${theCommandValue}","relay3":"${theCommandValue}","relay4":"${theCommandValue}","relay5":"${theCommandValue}","relay6":"${theCommandValue}","relay7":"${theCommandValue}","relay8":"${theCommandValue}"}
+	//commands.call("relay1":"${theCommandValue}","relay2":"${theCommandValue}","relay3":"${theCommandValue}","relay4":"${theCommandValue}","relay5":"${theCommandValue}","relay6":"${theCommandValue}","relay7":"${theCommandValue}","relay8":"${theCommandValue}"}
+	
+	def root = commands relay1: theCommandValue, relay2: theCommandValue, relay3: theCommandValue, relay4: theCommandValue, relay5: theCommandValue, relay6: theCommandValue, relay7: theCommandValue, relay8: theCommandValue
     
+	log("commands = " + commands.toString(), "DEBUG")
 	log("Commands = ${commands}", "DEBUG")
 	
 	def headers = [:] 
